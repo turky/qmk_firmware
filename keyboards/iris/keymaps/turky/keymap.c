@@ -19,26 +19,84 @@ enum custom_keycodes {
 #define KC_ KC_TRNS
 #define _______ KC_TRNS
 
-#define KC_QWE QWERTY
-#define KC_LOWR LOWER
-#define KC_RASE RAISE
+#define KC_QWE _QWERTY
+#define LOWR _LOWER
+#define KC_RASE _RAISE
 #define KC_RST RESET
 #define KC_BL_S BL_STEP
 
+#define EXLM   JP_EXLM
+#define DQT    JP_DQT
+#define HASH   JP_HASH
+#define DLR    JP_DLR
+#define PERC   JP_PERC
+#define AMPR   JP_AMPR
+//#define QUOT   JP_QUOT
+#define GRV    JP_GRV
+#define PIPE   JP_PIPE
+#define YEN    JP_YEN
+#define AT     JP_AT
+#define LCBR   JP_LCBR
+#define RCBR   JP_RCBR
+#define UNDS   JP_UNDS
+#define TILD   JP_TILD
+#define EQL    JP_EQL
+#define COLN   JP_COLN
+#define SLSH   JP_SLSH
+#define ASTR   JP_ASTR
+#define LPRN   JP_LPRN
+#define RPRN   JP_RPRN
+#define BSLS   JP_BSLS
+#define CIRC   JP_CIRC
+#define MINS   JP_MINS
+#define SCLN   JP_SCLN
+#define COMM   JP_COMM
+#define DOT    JP_DOT
+#define PLUS   JP_PLUS
+#define LBRC   JP_LBRC
+#define RBRC   JP_RBRC
+#define GUI    KC_LGUI
+#define ZHTG   JP_ZHTG
+#define ALT    KC_LALT
+#define CTL    KC_LCTL
+#define SFT    KC_LSFT
+#define ESC    KC_ESC
+#define DC     DF(COLEMAK)
+#define DE     DF(EMACS)
+#define COPY   LCTL(KC_C)
+#define PASTE  LCTL(KC_V)
+#define WH_D   KC_WH_D
+#define MS_U   KC_MS_U
+#define WH_U   KC_WH_U
+#define PGDN   KC_PGDN
+#define PGUP   KC_PGUP
+#define MS_L   KC_MS_L
+#define MS_D   KC_MS_D
+#define MS_R   KC_MS_R
+#define KLEFT  KC_LEFT
+#define KUP    KC_UP
+#define KDOWN  KC_DOWN
+#define KRIGHT KC_RIGHT
+#define MUTE   KC_MUTE
+#define VOLD   KC_VOLD
+#define VOLU   KC_VOLU
+#define BTN2   KC_BTN2
+#define BTN1   KC_BTN1
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [_QWERTY] = KC_KEYMAP(
-  //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
-     ESC , 1  , 2  , 3  , 4  , 5  ,                6  , 7  , 8  , 9  , 0  ,EQL ,
-  //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-     TAB , Q  , W  , E  , R  , T  ,                Y  , U  , I  , O  , P  ,DEL ,
-  //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-     RCTL, A  , S  , D  , F  , G  ,                H  , J  , K  , L  ,SCLN,QUOT,
-  //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-     LSFT, Z  , X  , C  , V  , B  , HENK,     MHEN , N  , M ,COMM,DOT ,SLSH,RGUI,
-  //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                       BSPC, DEL, RASE,      LOWR, ENT ,SPC
-  //                  `----+----+----'        `----+----+----'
+  [_QWERTY] = KEYMAP(
+  //,------+------+-----+-----+-----+-----.              ,----+----+----+----+----+----.
+     KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5,        KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS,
+  //|------+------+-----+-----+-----+-----|              |----+----+----+----+----+----|
+     KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,        KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC,
+  //|------+------+-----+-----+-----+-----|              |----+----+----+----+----+----|
+       CTL,  KC_A, KC_S, KC_D, KC_F, KC_G,           KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
+  //|------+------+-----+-----+-----+-----+----.    ,----|----+----+----+----+----+----|
+       SFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_HENK,    KC_RGUI, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RO,
+  //`------+------+-----+---+--+----+-----+----/    \----+----+----+----+----+----+----'
+                         KC_BSPC, KC_DEL, LT(_LOWER,KC_HOME),       LT(_RAISE,KC_END), KC_ENT ,KC_SPC
+  //                    `------+----+----'        `----+----+----'
   ),
 
   [_LOWER] = KC_KEYMAP(
@@ -51,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
      BL_S,    ,    ,    ,DOWN,LCBR,LPRN,     RPRN,RCBR, P1 , P2 , P3 ,MINS,    ,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                           ,    ,DEL ,         DEL ,    , QWE
+                           ,    ,DEL ,         DEL ,   , QWE
   //                  `----+----+----'        `----+----+----'
   ),
 
@@ -65,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
      MUTE,MSTP,MPLY,VOLD,PGDN,MINS,    ,         ,PLUS,END ,    ,    ,    ,    ,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                           ,    ,    ,             ,    , QWE
+                           ,    ,    ,             ,    ,QWE
   //                  `----+----+----'        `----+----+----'
   ),
 
