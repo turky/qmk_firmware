@@ -24,7 +24,7 @@ extern keymap_config_t keymap_config;
 #define DLR    JP_DLR
 #define PERC   JP_PERC
 #define AMPR   JP_AMPR
-//#define QUOT   JP_QUOT
+#define QUOT   JP_QUOT
 #define GRV    JP_GRV
 #define PIPE   JP_PIPE
 #define YEN    JP_YEN
@@ -54,10 +54,8 @@ extern keymap_config_t keymap_config;
 #define CTL    KC_LCTL
 #define SFT    KC_LSFT
 #define ESC    KC_ESC
-#define DC     DF(COLEMAK)
-#define DE     DF(EMACS)
-#define COPY   LCTL(KC_C)
-#define PASTE  LCTL(KC_V)
+// #define COPY   LCTL(KC_C)
+// #define PASTE  LCTL(KC_V)
 #define WH_D   KC_WH_D
 #define MS_U   KC_MS_U
 #define WH_U   KC_WH_U
@@ -75,57 +73,57 @@ extern keymap_config_t keymap_config;
 #define VOLU   KC_VOLU
 #define BTN2   KC_BTN2
 #define BTN1   KC_BTN1
-
+#define CTGUI  LCTL(KC_LGUI)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [QWERTY] = KEYMAP(
-  //,------+------+-----+-----+-----+-----.              ,----+----+----+----+----+----.
-     KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5,        KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS,
-  //|------+------+-----+-----+-----+-----|              |----+----+----+----+----+----|
-     KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,        KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC,
-  //|------+------+-----+-----+-----+-----|              |----+----+----+----+----+----|
-     KC_LCTL, KC_A, KC_S, KC_D, KC_F, KC_G,           KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
-  //|------+------+-----+-----+-----+-----+----.    ,----|----+----+----+----+----+----|
-     KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_HENK,    KC_RGUI, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RO,
-  //`------+------+-----+---+--+----+-----+----/    \----+----+----+----+----+----+----'
-                         KC_BSPC, KC_DEL, LT(KC_LOWR,KC_HOME),       LT(KC_RASE,KC_END),KC_ENT,KC_SPC
-  //                    `------+----+----'        `----+----+----'
+  //,------+-----+-----+-----+-----+-----.                  ,-----+-----+-----+-----+-----+-----.
+       ESC, KC_1, KC_2, KC_3, KC_4, KC_5,                    KC_6, KC_7, KC_8, KC_9, KC_0,MINS,
+  //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
+     KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                    KC_Y, KC_U, KC_I, KC_O, KC_P,LBRC,
+  //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
+     KC_LCTL, KC_A, KC_S, KC_D, KC_F, KC_G,              KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
+  //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
+     KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_HENK,   KC_RGUI, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RO,
+  //`------+-----+-----+---+--+-----+-----+----/       \----+-----+-----+-----+-----+-----+----'
+                     KC_BSPC,KC_DEL,KC_SPC,            KC_ENT,LT(KC_LOWR,KC_HOME),LT(KC_RASE,KC_END)
+  //                    `------+-----+----'              `---+-----+----'
   ),
 
   [LOWER] = KEYMAP(
-  //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
-     TILD,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN,KC_BSPC,
-  //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-     KC_RST, KC_1,KC_2,KC_3,KC_4,KC_5,            KC_6,KC_7,KC_8,KC_9,KC_0,____,
-  //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-     KC_DEL,____,KC_LEFT,KC_RGHT,KC_UP,LBRC,    RBRC,KC_P4,KC_P5 ,KC_P6,PLUS,PIPE,
-  //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-   KC_BL_S,____,____,____,KC_DOWN,LCBR,LPRN, RPRN,RCBR, KC_P1,KC_P2,KC_P3,MINS,____,
-  //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                       ____,____,KC_DEL ,     KC_DEL ,____, TO(QWERTY)
-  //                  `----+----+----'        `----+----+----'
+  //,----+-----+-----+-----+-----+-----.              ,----+-----+-----+-----+-----+----.
+     TILD, EXLM,   AT, HASH,  DLR, PERC,               CIRC, AMPR, ASTR, LPRN, RPRN,KC_BSPC,
+  //|----+-----+-----+-----+-----+-----|              |----+-----+-----+-----+-----+----|
+     KC_TAB, KC_1,KC_2,KC_3,KC_4,KC_5,                 KC_6,KC_7,KC_8,KC_9,KC_0,____,
+  //|----+-----+-----+-----+-----+-----|              |----+-----+-----+-----+-----+----|
+     CTGUI,____,KLEFT,KRIGHT,KUP,LBRC,                 RBRC,KC_P4,KC_P5 ,KC_P6,PLUS,PIPE,
+  //|----+-----+-----+-----+-----+-----+----.    ,----|----+-----+-----+-----+-----+----|
+   KC_BL_S,____,____,____,  KDOWN,LCBR,KC_MHEN,     RPRN, RCBR, KC_P1,KC_P2,KC_P3,MINS,____,
+  //`----+-----+-----+--+-+-----+-----+----/    \----+-----+-----+-----+-----+-----+----'
+                       KC_LALT,____, KC_DEL,     KC_DEL,____, TO(QWERTY)
+  //                  `----+-----+----'        `----+-----+----'
   ),
 
   [RAISE] = KEYMAP(
-  //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
+  //,----+-----+-----+-----+-----+----.              ,----+-----+-----+-----+-----+----.
      KC_F12,KC_F1,KC_F2,KC_F3,KC_F4,KC_F5 ,      KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11 ,
-  //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-     ____,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN,____,
-  //|----+----+----+----+----+----|              |----+----+----+----+----+----|
+  //|----+-----+-----+-----+-----+----|              |----+-----+-----+-----+-----+----|
+     KC_RST ,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN,____,
+  //|----+-----+-----+-----+-----+----|              |----+-----+-----+-----+-----+----|
      ____,KC_MPRV,KC_MNXT,VOLU,PGUP,UNDS,         EQL ,KC_HOME,____,____,____,BSLS,
-  //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
+  //|----+-----+-----+-----+-----+-----+----.    ,----|----+-----+-----+-----+-----+----|
      MUTE,____,____,VOLD,PGDN,MINS,____,     ____,PLUS,END ,____,____,____,____,
-  //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
+  //`----+-----+-----+--+-+-----+-----+----/    \----+-----+-----+-----+-----+-----+----'
                        ____,____,____,         ____,____,TO(QWERTY)
-  //                  `----+----+----'        `----+----+----'
+  //                  `----+-----+----'        `----+-----+----'
   )
 
 };
 
 /*
 #ifdef AUDIO_ENABLE
-float tone_qwerty[][2]     = SONG(QWERTY_SOUND);
+flxoat tone_qwerty[][2]     = SONG(QWERTY_SOUND);
 #endif
 */
 
