@@ -4,16 +4,17 @@
 
 extern keymap_config_t keymap_config;
 
-#define QWERTY 0
-#define LOWER 1
-#define RAISE 2
+#define _QWERTY 0
+#define _LOWER 1
+#define _RAISE 2
+#define _ADJUST 16
 
 #define ____ KC_TRNS
 #define xxxx KC_NO
 
 #define KC_QWE QWERTY
-#define KC_LOWR LOWER
-#define KC_RASE RAISE
+// #define KC_LOWR LOWER
+// #define KC_RASE RAISE
 #define KC_RST RESET
 //#define KC_BL_S BL_STEP
 
@@ -83,12 +84,20 @@ extern keymap_config_t keymap_config;
 #define BTN2   KC_BTN2
 #define BTN1   KC_BTN1
 #define CTGUI  LCTL(KC_LGUI)
-#define LWR    LT(KC_LOWR, HOME)
-#define RSE    LT(KC_RASE, END)
+// #define LWR    LT(KC_LOWR, HOME)
+// #define RSE    LT(KC_RASE, END)
+
+
+enum custom_keycodes {
+  QWERTY = SAFE_RANGE,
+  LOWER,
+  RAISE,
+  ADJUST,
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [QWERTY] = LAYOUT(
+   [_QWERTY] = LAYOUT(
   //,------+-----+-----+-----+-----+-----.                  ,-----+-----+-----+-----+-----+-----.
       ESC,  KC_1, KC_2, KC_3, KC_4, KC_5,                    KC_6, KC_7, KC_8, KC_9, KC_0, MINS,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
@@ -98,11 +107,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
       SFT,  KC_Z, KC_X, KC_C, KC_V, KC_B, HENK,         GUI, KC_N, KC_M, COMM, DOT,  SLSH, BSLS,
   //`------+-----+-----+-----+-----+-----+----/        \----+-----+-----+-----+-----+-----+----'
-                          BSPC,  DEL, SPC,             KC_ENT,KC_LOWR,KC_RASE
+                          BSPC,  DEL, SPC,             KC_ENT,LOWER,RAISE
   //                    `------+-----+----'              `---+-----+----'
   ),
 
-  [LOWER] = LAYOUT(
+  [_LOWER] = LAYOUT(
   //,------+-----+-----+-----+-----+-----.                  ,-----+-----+-----+-----+-----+-----.
       GRV,  EXLM,  DQT, HASH,  DLR, PERC,                    CIRC, QUOT, LPRN, RPRN, TILD, PIPE,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
@@ -116,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                    `------+-----+----'              `---+-----+----'
   ),
 
-  [RAISE] = LAYOUT(
+  [_RAISE] = LAYOUT(
   //,------+-----+-----+-----+-----+-----.                  ,-----+-----+-----+-----+-----+-----.
      KC_F12,KC_F1,KC_F2,KC_F3,KC_F4,KC_F5 ,                  KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
@@ -126,32 +135,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
       ____, MUTE, ____, VOLD, PGDN, MINS,____,         ____, PLUS,  END, MS_L, MS_D, MS_R, ____,
   //`------+-----+-----+-----+-----+-----+----/       \----+-----+-----+-----+-----+-----+----'
-                           ____,____,____,                ____,____,TO(QWERTY)
+                           ____,____,____,             ADJUST,____,TO(QWERTY)
   //                    `------+-----+----'              `---+-----+----'
-  )
+  ),
 
+  [_ADJUST] = LAYOUT(
+  //,------+-----+-----+-----+-----+-----.                  ,-----+-----+-----+-----+-----+-----.
+     ____, ____, ____, ____, ____, ____,                     ____, ____, ____, ____, ____, ____,
+  //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
+     ____, ____, ____, ____, ____, ____,                     ____, ____, ____, ____, ____, ____,
+  //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
+     ____, ____, ____, ____, ____, ____,                     ____, ____, ____, ____, ____, ____,
+  //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
+     ____, ____, ____, ____, ____, ____, ____,         ____, ____, ____, ____, ____, ____, ____,
+  //`------+-----+-----+-----+-----+-----+----/       \----+-----+-----+-----+-----+-----+----'
+                         ____, ____, ____,              ____, ____, ____
+ //                    `------+-----+----'              `---+-----+----'
+  )
 };
 
-/*
-#ifdef AUDIO_ENABLE
-flxoat tone_qwerty[][2]     = SONG(QWERTY_SOUND);
-#endif
-*/
-
-void persistent_default_layer_set(uint16_t default_layer) {
-  eeconfig_update_default_layer(default_layer);
-  default_layer_set(default_layer);
-}
-
-/*
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case QWERTY:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_qwerty);
-        #endif
-        persistent_default_layer_set(1UL<<_QWERTY);
+        set_single_persistent_default_layer(_QWERTY);
       }
       return false;
       break;
@@ -186,5 +193,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
-*/
-
