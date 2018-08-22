@@ -1,6 +1,5 @@
-#include "iris.h"
-#include "action_layer.h"
-#include "eeconfig.h"
+#include QMK_KEYBOARD_H
+
 #include "keymap_jp.h"
 
 extern keymap_config_t keymap_config;
@@ -89,7 +88,7 @@ extern keymap_config_t keymap_config;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [QWERTY] = KEYMAP(
+  [QWERTY] = LAYOUT(
   //,------+-----+-----+-----+-----+-----.                  ,-----+-----+-----+-----+-----+-----.
       ESC,  KC_1, KC_2, KC_3, KC_4, KC_5,                    KC_6, KC_7, KC_8, KC_9, KC_0, MINS,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
@@ -99,11 +98,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
       SFT,  KC_Z, KC_X, KC_C, KC_V, KC_B, HENK,         GUI, KC_N, KC_M, COMM, DOT,  SLSH, BSLS,
   //`------+-----+-----+-----+-----+-----+----/        \----+-----+-----+-----+-----+-----+----'
-                          BSPC,  DEL, SPC,              KC_ENT,LWR, RSE
+                          BSPC,  DEL, SPC,             KC_ENT,KC_LOWR,KC_RASE
   //                    `------+-----+----'              `---+-----+----'
   ),
 
-  [LOWER] = KEYMAP(
+  [LOWER] = LAYOUT(
   //,------+-----+-----+-----+-----+-----.                  ,-----+-----+-----+-----+-----+-----.
       GRV,  EXLM,  DQT, HASH,  DLR, PERC,                    CIRC, QUOT, LPRN, RPRN, TILD, PIPE,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
@@ -111,13 +110,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
       CTGUI,____, LCBR, RCBR, LBRC, RBRC,                    KLEFT,KDOWN, KUP ,KRIGHT,PLUS,PIPE,
   //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
-      ____, KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,MHEN,        ____, KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11,
+      ____, KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,MHEN,        HOME, KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11,
   //`------+-----+-----+-----+-----+-----+----/        \----+-----+-----+-----+-----+-----+----'
-                          ALT,  CTL,  DEL,               ____,____, TO(QWERTY)
+                          ALT,  CTL,  DEL,               END,____, TO(QWERTY)
   //                    `------+-----+----'              `---+-----+----'
   ),
 
-  [RAISE] = KEYMAP(
+  [RAISE] = LAYOUT(
   //,------+-----+-----+-----+-----+-----.                  ,-----+-----+-----+-----+-----+-----.
      KC_F12,KC_F1,KC_F2,KC_F3,KC_F4,KC_F5 ,                  KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
