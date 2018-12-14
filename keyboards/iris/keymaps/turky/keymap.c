@@ -131,9 +131,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
       ____, EXLM,  DQT, HASH,  DLR, PERC,                    CIRC, QUOT, LPRN, RPRN, TILD, PIPE,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
-     KC_RST,KC_MPRV,KC_MNXT,VOLU,PGUP,UNDS,                   EQL, HOME, BTN1, MS_U, BTN2, BSLS,
+     KC_RST,KC_MPRV,KC_MNXT,VOLU,PGUP,UNDS,                   MS_L, MS_D, MS_U, MS_R, EQL, BSLS,
   //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
-      ____, MUTE, ____, VOLD, PGDN, MINS,____,         ____, PLUS,  END, MS_L, MS_D, MS_R, ____,
+      ____, MUTE, ____, VOLD, PGDN, MINS,____,         ____, HOME, END, BTN1, BTN2, PLUS, ____,
   //`------+-----+-----+-----+-----+-----+----/       \----+-----+-----+-----+-----+-----+----'
                            ____,____,____,             ADJUST,____,TO(QWERTY)
   //                    `------+-----+----'              `---+-----+----'
