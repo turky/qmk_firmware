@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT(
   //,------+-----+-----+-----+-----+-----.                  ,-----+-----+-----+-----+-----+-----.
-      GRV,  EXLM,  DQT, HASH,  DLR, PERC,                    CIRC, QUOT, LPRN, RPRN, TILD, PIPE,
+      GRV,  EXLM,  DQT, HASH,  DLR, PERC,                    AMPR, QUOT, LPRN, RPRN, TILD, CIRC,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
       ____, KC_1, KC_2, KC_3, KC_4, KC_5,                     KC_6, KC_7, KC_8, KC_9, KC_0,QUOT,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
@@ -121,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
       ____, KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,MHEN,        HOME, KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11,
   //`------+-----+-----+-----+-----+-----+----/        \----+-----+-----+-----+-----+-----+----'
-                          ALT,  CTL,  DEL,               END,____, TO(QWERTY)
+                          ALT,  CTL,  DEL,               END,____, ADJUST
   //                    `------+-----+----'              `---+-----+----'
   ),
 
@@ -129,13 +129,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,------+-----+-----+-----+-----+-----.                  ,-----+-----+-----+-----+-----+-----.
      KC_F12,KC_F1,KC_F2,KC_F3,KC_F4,KC_F5 ,                  KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
-      ____, EXLM,  DQT, HASH,  DLR, PERC,                    CIRC, QUOT, LPRN, RPRN, TILD, PIPE,
+      ____, EXLM,  DQT, HASH,  DLR, PERC,                    AMPR, QUOT, LPRN, RPRN, TILD, CIRC,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
      KC_RST,KC_MPRV,KC_MNXT,VOLU,PGUP,UNDS,                   MS_L, MS_D, MS_U, MS_R, EQL, BSLS,
   //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
       ____, MUTE, ____, VOLD, PGDN, MINS,____,         ____, HOME, END, BTN1, BTN2, PLUS, ____,
   //`------+-----+-----+-----+-----+-----+----/       \----+-----+-----+-----+-----+-----+----'
-                           ____,____,____,             ADJUST,____,TO(QWERTY)
+                           HENK,MHEN,____,              ____,ADJUST,____
   //                    `------+-----+----'              `---+-----+----'
   ),
 
