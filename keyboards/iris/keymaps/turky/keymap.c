@@ -119,9 +119,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
       CTGUI,____, LCBR, RCBR, LBRC, RBRC,                    KLEFT,KDOWN, KUP ,KRIGHT,PLUS,PIPE,
   //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
-      ____, KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,MHEN,        HOME, KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11,
+      ____, KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,HOME,         END, KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11,
   //`------+-----+-----+-----+-----+-----+----/        \----+-----+-----+-----+-----+-----+----'
-                          ALT,  CTL,  DEL,               END,____, ADJUST
+                          ALT,  CTL,  DEL,               ____,____, ADJUST
   //                    `------+-----+----'              `---+-----+----'
   ),
 
@@ -129,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,------+-----+-----+-----+-----+-----.                  ,-----+-----+-----+-----+-----+-----.
      KC_F12,KC_F1,KC_F2,KC_F3,KC_F4,KC_F5 ,                  KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
-      ____, EXLM,  DQT, HASH,  DLR, PERC,                    AMPR, QUOT, LPRN, RPRN, TILD, CIRC,
+      ESC , EXLM,  DQT, HASH,  DLR, PERC,                    AMPR, QUOT, LPRN, RPRN, TILD, CIRC,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
      KC_RST,KC_MPRV,KC_MNXT,VOLU,PGUP,UNDS,                   MS_L, MS_D, MS_U, MS_R, EQL, BSLS,
   //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
