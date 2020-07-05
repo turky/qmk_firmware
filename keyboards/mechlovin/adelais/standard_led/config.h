@@ -1,6 +1,9 @@
 #pragma once
 
+<<<<<<< HEAD
 #define PRODUCT_ID   0xAD01
+=======
+>>>>>>> upstream/master
 #define PRODUCT      Adelais
 #define DESCRIPTION  Team.Mechlovin Adelais
 

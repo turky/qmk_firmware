@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MCU name
 MCU = atmega32a
 
@@ -11,4 +12,6 @@ MCU = atmega32a
 #   ATmega328P   USBasp
 BOOTLOADER = bootloadHID
 
+=======
+>>>>>>> upstream/master
 DEFAULT_FOLDER = ymd75/rev1

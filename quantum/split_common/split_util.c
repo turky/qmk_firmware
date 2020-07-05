@@ -5,6 +5,15 @@
 #include "timer.h"
 #include "transport.h"
 #include "quantum.h"
+#include "wait.h"
+
+#ifdef PROTOCOL_LUFA
+#    include <LUFA/Drivers/USB/USB.h>
+#endif
+
+#ifdef PROTOCOL_VUSB
+#    include "usbdrv.h"
+#endif
 
 #ifdef PROTOCOL_LUFA
 #    include <LUFA/Drivers/USB/USB.h>
@@ -68,6 +77,8 @@ bool usbIsActive(void) {
 
     // Avoid NO_USB_STARTUP_CHECK - Disable USB as the previous checks seem to enable it somehow
     usbDisable();
+<<<<<<< HEAD
+=======
 
     return false;
 }
@@ -81,12 +92,48 @@ static inline bool usbIsActive(void) {
 #else
 static inline bool usbIsActive(void) { return true; }
 #endif
+>>>>>>> upstream/master
+
+#ifdef SPLIT_HAND_MATRIX_GRID
+void matrix_io_delay(void);
+
+static uint8_t peek_matrix_intersection(pin_t out_pin, pin_t in_pin) {
+    setPinInputHigh(in_pin);
+    setPinOutput(out_pin);
+    writePinLow(out_pin);
+    // It's almost unnecessary, but wait until it's down to low, just in case.
+    wait_us(1);
+    uint8_t pin_state = readPin(in_pin);
+    // Set out_pin to a setting that is less susceptible to noise.
+    setPinInputHigh(out_pin);
+    matrix_io_delay(); // Wait for the pull-up to go HIGH.
+    return pin_state;
+}
+<<<<<<< HEAD
+#elif defined(PROTOCOL_LUFA)
+static inline bool usbIsActive(void) {
+    USB_OTGPAD_On();  // enables VBUS pad
+    wait_us(5);
+
+    return USB_VBUS_GetStatus();  // checks state of VBUS
+}
+#else
+static inline bool usbIsActive(void) { return true; }
+=======
+>>>>>>> upstream/master
+#endif
 
 __attribute__((weak)) bool is_keyboard_left(void) {
 #if defined(SPLIT_HAND_PIN)
     // Test pin SPLIT_HAND_PIN for High/Low, if low it's right hand
     setPinInput(SPLIT_HAND_PIN);
     return readPin(SPLIT_HAND_PIN);
+#elif defined(SPLIT_HAND_MATRIX_GRID)
+#   ifdef SPLIT_HAND_MATRIX_GRID_LOW_IS_RIGHT
+    return peek_matrix_intersection(SPLIT_HAND_MATRIX_GRID);
+#   else
+    return !peek_matrix_intersection(SPLIT_HAND_MATRIX_GRID);
+#   endif
 #elif defined(EE_HANDS)
     return eeconfig_read_handedness();
 #elif defined(MASTER_RIGHT)

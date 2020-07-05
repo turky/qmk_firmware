@@ -11,6 +11,7 @@ MCU = atmega32u4
 #   ATmega328P   USBasp
 BOOTLOADER = atmel-dfu
 
+<<<<<<< HEAD
 # If you don't know the bootloader type, then you can specify the
 # Boot Section Size in *bytes* by uncommenting out the OPT_DEFS line
 # Otherwise, delete this section
@@ -21,6 +22,8 @@ BOOTLOADER = atmel-dfu
 #   USBaspLoader        2048
 # OPT_DEFS += -DBOOTLOADER_SIZE=4096
 
+=======
+>>>>>>> upstream/master
 # Build Options
 #   change yes to no to disable
 #
@@ -39,7 +42,12 @@ MIDI_ENABLE = no            # MIDI support
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 AUDIO_ENABLE = no           # Audio output on port C6
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
+<<<<<<< HEAD
 HD44780_ENABLE = no         # Enable support for HD44780 based LCDs
 ENCODER_ENABLE = yes
 RGBLIGHT_ENABLE = yes
 # EXTRAFLAGS += -flto
+=======
+ENCODER_ENABLE = yes
+RGBLIGHT_ENABLE = yes
+>>>>>>> upstream/master
