@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # MCU name
 MCU = atmega32a
 
@@ -13,7 +11,6 @@ MCU = atmega32a
 #   ATmega328P   USBasp
 BOOTLOADER = bootloadHID
 
->>>>>>> upstream/master
 # build options
 BOOTMAGIC_ENABLE = yes
 MOUSEKEY_ENABLE = no
