@@ -1,4 +1,4 @@
-/* Copyright 2018 Alex Peters
+/* Copyright 2018 Salicylic_acid3
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,8 +17,9 @@
 #ifndef CONFIG_USER_H
 #define CONFIG_USER_H
 
-#include "config_common.h"
 
-// place overrides here
 
-#endif
+/* Select hand configuration */
+
+#define TAPPING_FORCE_HOLD
+#define TAPPING_TERM 200
