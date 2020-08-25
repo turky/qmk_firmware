@@ -1,5 +1,5 @@
-#include "split_util.h"
 #include "matrix.h"
+#include "split_util.h"
 #include "keyboard.h"
 #include "config.h"
 #include "timer.h"
@@ -77,8 +77,6 @@ bool usbIsActive(void) {
 
     // Avoid NO_USB_STARTUP_CHECK - Disable USB as the previous checks seem to enable it somehow
     usbDisable();
-<<<<<<< HEAD
-=======
 
     return false;
 }
@@ -92,7 +90,6 @@ static inline bool usbIsActive(void) {
 #else
 static inline bool usbIsActive(void) { return true; }
 #endif
->>>>>>> upstream/master
 
 #ifdef SPLIT_HAND_MATRIX_GRID
 void matrix_io_delay(void);
@@ -109,18 +106,6 @@ static uint8_t peek_matrix_intersection(pin_t out_pin, pin_t in_pin) {
     matrix_io_delay(); // Wait for the pull-up to go HIGH.
     return pin_state;
 }
-<<<<<<< HEAD
-#elif defined(PROTOCOL_LUFA)
-static inline bool usbIsActive(void) {
-    USB_OTGPAD_On();  // enables VBUS pad
-    wait_us(5);
-
-    return USB_VBUS_GetStatus();  // checks state of VBUS
-}
-#else
-static inline bool usbIsActive(void) { return true; }
-=======
->>>>>>> upstream/master
 #endif
 
 __attribute__((weak)) bool is_keyboard_left(void) {
