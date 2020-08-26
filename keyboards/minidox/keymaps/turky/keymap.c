@@ -68,8 +68,8 @@ enum custom_keycodes {
 #define MHEN   KC_MHEN
 #define HOME   KC_HOME
 #define END    KC_END
-// #define COPY   LCTL(KC_C)
-// #define PASTE  LCTL(KC_V)
+#define COPY   LCTL(KC_C)
+#define PASTE  LCTL(KC_V)
 #define DEL    KC_DEL
 #define WH_D   KC_WH_D
 #define MS_U   KC_MS_U
@@ -89,9 +89,8 @@ enum custom_keycodes {
 #define VOLU   KC_VOLU
 #define BTN2   KC_BTN2
 #define BTN1   KC_BTN1
-#define CTGUI  LCTL(KC_LGUI)
-#define BSFT LT(KC_LSFT, BSPC)
-#define DLCT  LT(KC_LCTL, DEL)
+
+#define SFTZ   LSFT_T(KC_Z)
 
 // Defines for task manager and such
 #define CALTDEL LCTL(LALT(KC_DEL))
@@ -109,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |   Z  |   X  |   C  |   V  |   B  |           |   N  |   M  |   ,  |   .  |   /  |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
- *                  | BkSp |  Del |      |    |      |Lower |Raise |
+ *                  | Shift | Ctrl|      |    |      |Lower |Raise |
  *                  `-------------| Space|    |Enter |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
@@ -118,8 +117,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT( \
       KC_Q,  KC_W, KC_E, KC_R, KC_T,         KC_Y, KC_U, KC_I, KC_O, KC_P,
       KC_A,  KC_S, KC_D, KC_F, KC_G,         KC_H, KC_J, KC_K, KC_L, SCLN,
-      KC_Z,  KC_X, KC_C, KC_V, KC_B,         KC_N, KC_M, COMM, DOT,  SLSH,
-                    BSFT, DLCT, SPC,         KC_ENT,RAISE,LOWER
+      SFTZ,  KC_X, KC_C, KC_V, KC_B,         KC_N, KC_M, COMM, DOT,  SLSH,
+                    SFT,  CTL,  SPC,         KC_ENT,RAISE,LOWER
 ),
 
 /* Raise
@@ -127,43 +126,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------.           ,----------------------------------.
  * |   1  |   2  |   3  |   4  |   5  |           |   6  |   7  |   8  |   9  |   0  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  Tab |   {  |   }  |   (  |   )  |           | Left | Down |  Up  |Right | Coln |
+ * |  Tab |   {  |   }  |   [  |   ]  |           | Left | Down |  Up  |Right |   :  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |   F1 |  F2  |  F3  |  F4  |  F5  |           |  F6  |  F7  |  F8  |  F9  |  F10 |
+ * |   !  |   "  |   #  |   $  |   %  |           |   &  |   '  |   (  |   )  |   -  |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
- *                  |  Alt | Ctrl |      |    |      |      |      |
- *                  `-------------| Del  |    |      |------+------.
+ *                  | Del |   BS  |      |    |      |      |      |
+ *                  `-------------| Gui  |    | Alt  |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
  */
 [_RAISE] = LAYOUT( \
-      KC_1, KC_2, KC_3, KC_4, KC_5,          KC_6, KC_7, KC_8, KC_9, KC_0,
-      TAB , LCBR, RCBR, LBRC, RBRC,          KLEFT,KDOWN, KUP ,KRIGHT,COLN,
-      KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,         KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,
-                    ALT,  CTL,  DEL,         ____,____, ADJUST
+      KC_1, KC_2, KC_3, KC_4, KC_5,     KC_6, KC_7, KC_8, KC_9, KC_0,
+      TAB , LCBR, RCBR, LBRC, RBRC,     KLEFT,KDOWN, KUP ,KRIGHT,COLN,
+      EXLM,  DQT, HASH,  DLR, PERC,     AMPR, QUOT, LPRN, RPRN, MINS,
+                     DEL, BSPC, GUI,    ALT  ,____, ____
 ),
 
 /* Lower
  *
  * ,----------------------------------.           ,----------------------------------.
- * |   !  |   "  |   #  |   $  |   %  |           |   &  |   '  |   (  |   )  |   -  |
+ * |  Esc |      | VolU | PgUp | Copy |           |      |   _  |   +  |   ~  |   ^  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  Esc |      |      |      |      |           |      |   _  |   +  |   {  |   }  |
+ * |  Caps|      | VolD | PgDn |Paste |           |      |   @  |   *  |   |  |   \  |
  * |------+------+------+------+------|           |------+------+------+------+------|
- * |  Caps|   ~  |      |      |      |           |      |      |      |   |  |   \  |
+ * |   F1 |  F2  |  F3  |  F4  |  F5  |           |  F6  |  F7  |  F8  |  F9  |  F10 |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
- *                  | HENK | MHEN |      |    |      | RAISE|  Del |
+ *                  | HENK | MHEN |      |    |      |      |      |
  *                  `-------------|      |    |      |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
  */
 [_LOWER] = LAYOUT( \
-  EXLM,  DQT, HASH,  DLR, PERC,     AMPR, QUOT, LPRN, RPRN, MINS, \
-   ESC, ____, ____, ____, ____,      ____, UNDS, PLUS, TILD, ____, \
-JP_CAPS, TILD, ____, ____, ____,      ____, ____, ____, PIPE, BSLS, \
-           JP_ZKHK, MHEN, ____,      ____, ____, ____ \
+    ESC, ____, VOLU, PGUP, COPY,      ____, UNDS, PLUS, TILD, CIRC,
+JP_CAPS, ____, VOLD, PGDN,PASTE,      ____,  AT , ASTR, PIPE, BSLS,
+  KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,      KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,
+               HENK, MHEN, ____,      ____, ____, ____ \
 ),
 
 /* Adjust (Lower + Raise)
@@ -176,16 +175,16 @@ JP_CAPS, TILD, ____, ____, ____,      ____, ____, ____, PIPE, BSLS, \
  * | Reset|      |      |      |      |           |      |      |      |      |      |
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
- *                  |      | LOWER|      |    |      | RAISE|      |
+ *                  |      |      |      |    |      |      |      |
  *                  `-------------|      |    |      |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
  */
 [_ADJUST] =  LAYOUT( \
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, \
-  KC_F11,  KC_F12,  ____, ____, ____,      ____, ____, ____, TSKMGR, CALTDEL, \
-  RESET,   ____, ____, ____, ____,      ____, ____, ____, ____,  ____, \
-                    ____, ____, ____,      ____,  ____, ____                    \
+  KC_F1,  KC_F2, KC_F3, KC_F4, KC_F5,     KC_F6, KC_F7, KC_F8,  KC_F9,  KC_F10, \
+  KC_F11, KC_F12, ____,  ____,  ____,      ____,  ____,  ____, TSKMGR, CALTDEL, \
+   RESET,   ____, ____,  ____,  ____,      ____,  ____,  ____,   ____,    ____, \
+                    ____, ____, ____,      ____,  ____,  ____                    \
 )
 };
 
