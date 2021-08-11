@@ -89,6 +89,7 @@ enum custom_keycodes {
 #define VOLU   KC_VOLU
 #define BTN2   KC_BTN2
 #define BTN1   KC_BTN1
+#define PTSC KC_PSCREEN
 
 #define SFTZ   LSFT_T(KC_Z)
 #define GUIX   LGUI_T(KC_X)
@@ -147,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Lower
  *
  * ,----------------------------------.           ,----------------------------------.
- * |  Esc |      | VolU | PgUp | Copy |           |      |   _  |   +  |   ~  |   ^  |
+ * |  Esc |      | VolU | PgUp | Copy |           | PtSc |   _  |   +  |   ~  |   ^  |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  Caps|      | VolD | PgDn |Paste |           |      |   @  |   *  |   |  |   \  |
  * |------+------+------+------+------|           |------+------+------+------+------|
@@ -155,15 +156,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  | HENK | MHEN |      |    |      |      |      |
- *                  `-------------|      |    |      |------+------.
+ *                  `-------------|      |    | Alt  |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
  */
 [_LOWER] = LAYOUT( \
-    ESC, ____, VOLU, PGUP, COPY,      ____, UNDS, PLUS, TILD, CIRC,
+    ESC, ____, VOLU, PGUP, COPY,      PTSC, UNDS, PLUS, TILD, CIRC,
 JP_CAPS, ____, VOLD, PGDN,PASTE,      ____,  AT , ASTR, PIPE, BSLS,
   KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,      KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,
-               HENK, MHEN, ____,      ____, ____, ____ \
+               HENK, MHEN, ____,       ALT, ____, ____ \
 ),
 
 /* Adjust (Lower + Raise)
