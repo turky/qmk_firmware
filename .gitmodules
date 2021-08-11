@@ -1,11 +1,3 @@
-[submodule "lib/chibios"]
-	path = lib/chibios
-	url = https://github.com/qmk/ChibiOS
-	branch = master
-[submodule "lib/chibios-contrib"]
-	path = lib/chibios-contrib
-	url = https://github.com/qmk/ChibiOS-Contrib
-	branch = master
 [submodule "lib/ugfx"]
 	path = lib/ugfx
 	url = https://github.com/qmk/uGFX
@@ -22,3 +14,9 @@
 [submodule "lib/lufa"]
 	path = lib/lufa
 	url = https://github.com/qmk/lufa.git
+[submodule ".\\lib\\chibios"]
+	path = .\\lib\\chibios
+	url = git@github.com:qmk/ChibiOS.git
+[submodule ".\\lib\\chibios-contrib"]
+	path = .\\lib\\chibios-contrib
+	url = git@github.com:qmk/ChibiOS-Contrib.git
