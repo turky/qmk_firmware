@@ -26,17 +26,17 @@ endif
 ifeq ($(strip $(KEYBOARD)), tkc/osav2)
   SRC += rgblight_layers_osa.c
   VELOCIKEY_ENABLE=yes
+  SRC += rgb_timeout.c
 endif
 ifeq ($(strip $(KEYBOARD)), boardsource/the_mark)
   RGB_MATRIX_ENABLE = yes
   RGBLIGHT_ENABLE = no
 endif
-<<<<<<< HEAD
-=======
 ifeq ($(strip $(KEYBOARD)), jacky_studio/bear_65)
   BACKLIGHT_ENABLE = yes
   RGB_MATRIX_ENABLE = yes
   RGBLIGHT_ENABLE = no
+  SRC += rgb_layers.c
 endif
 ifeq ($(strip $(KEYBOARD)), tkc/portico)
   SRC += rgb_timeout.c
@@ -44,4 +44,6 @@ endif
 ifeq ($(strip $(KEYBOARD)), kiwikey/wanderland)
   SRC += rgb_timeout.c
 endif
->>>>>>> upstream/master
+ifeq ($(strip $(KEYBOARD)), mechlovin/adelais/rgb_led/rev2)
+  SRC += rgb_layers.c
+endif

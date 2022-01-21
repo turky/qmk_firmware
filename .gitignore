@@ -20,7 +20,6 @@
 api_data/v1
 doxygen/
 quantum/version.h
-!quantum/tools/eeprom_reset.hex
 *.bin
 *.eep
 *.hex
@@ -75,13 +74,10 @@ tags
 
 # Things Travis sees
 /.vs
-<<<<<<< HEAD
 *.
 *.sublime-*
-=======
 id_rsa_*
 secrets.tar
->>>>>>> upstream/master
 
 # Python things
 __pycache__
@@ -92,3 +88,8 @@ __pycache__
 
 # Allow to exist but don't include it in the repo
 user_song_list.h
+
+# clangd
+compile_commands.json
+.clangd/
+.cache/
