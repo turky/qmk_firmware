@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 
-#include "../../../../quantum/keymap_extras/keymap_jp.h"
+#include "keymap_jp.h"
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  | Del |   BS  |      |    |      |      |      |
- *                  `-------------| Gui  |    | Alt  |------+------.
+ *                  `-------------| Alt  |    | Gui  |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
  */
@@ -142,13 +142,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_1, KC_2, KC_3, KC_4, KC_5,     KC_6, KC_7, KC_8, KC_9, KC_0,
       TAB , LCBR, RCBR, LBRC, RBRC,     KLEFT,KDOWN, KUP ,KRIGHT,COLN,
       EXLM,  DQT, HASH,  DLR, PERC,     AMPR, QUOT, LPRN, RPRN, MINS,
-                     DEL, BSPC, GUI,    ALT  ,____, ____
+                     DEL, BSPC, ALT,    GUI  ,____, ____
 ),
 
 /* Lower
  *
  * ,----------------------------------.           ,----------------------------------.
- * |  Esc |      | VolU | PgUp | Copy |           | PtSc |   _  |   +  |   ~  |   ^  |
+ * |  Esc | PtSc | VolU | PgUp | Copy |           |      |   _  |   +  |   ~  |   ^  |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |  Caps|      | VolD | PgDn |Paste |           |      |   @  |   *  |   |  |   \  |
  * |------+------+------+------+------|           |------+------+------+------+------|
@@ -156,15 +156,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `----------------------------------'           `----------------------------------'
  *                  ,--------------------.    ,------,-------------.
  *                  | HENK | MHEN |      |    |      |      |      |
- *                  `-------------|      |    | Alt  |------+------.
+ *                  `-------------| Alt  |    |      |------+------.
  *                                |      |    |      |
  *                                `------'    `------'
  */
 [_LOWER] = LAYOUT( \
-    ESC, ____, VOLU, PGUP, COPY,      PTSC, UNDS, PLUS, TILD, CIRC,
+    ESC, PTSC, VOLU, PGUP, COPY,      ____, UNDS, PLUS, TILD, CIRC,
 JP_CAPS, ____, VOLD, PGDN,PASTE,      ____,  AT , ASTR, PIPE, BSLS,
   KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,      KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,
-               HENK, MHEN, ____,       ALT, ____, ____ \
+               HENK, MHEN,  ALT,      ____, ____, ____ \
 ),
 
 /* Adjust (Lower + Raise)
