@@ -1,6 +1,7 @@
 #include QMK_KEYBOARD_H
 
 #include "keymap_jp.h"
+#include "process_tap_dance.h"
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -21,17 +22,20 @@ enum custom_keycodes {
   ADJUST,
 };
 
+enum {
+    TD_Q_ESC = 0
+};
+
 #define KC_RST RESET
 //#define KC_BL_S BL_STEP
 
 #define EXLM   JP_EXLM
-#define DQT    JP_DQT
+#define DQT    JP_DQUO
 #define HASH   JP_HASH
 #define DLR    JP_DLR
 #define PERC   JP_PERC
 #define AMPR   JP_AMPR
 #define QUOT   JP_QUOT
-#define DQT    JP_DQT
 #define GRV    JP_GRV
 #define PIPE   JP_PIPE
 #define YEN    JP_YEN
@@ -117,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_QWERTY] = LAYOUT( \
-      KC_Q,  KC_W, KC_E, KC_R, KC_T,         KC_Y, KC_U, KC_I, KC_O, KC_P,
+  TD_Q_ESC,  KC_W, KC_E, KC_R, KC_T,         KC_Y, KC_U, KC_I, KC_O, KC_P,
       KC_A,  KC_S, KC_D, KC_F, KC_G,         KC_H, KC_J, KC_K, KC_L, SCLN,
       SFTZ,  GUIX, KC_C, KC_V, KC_B,         KC_N, KC_M, COMM, DOT,  SLSH,
                     SFT,  CTL,  SPC,         KC_ENT,RAISE,LOWER
@@ -237,3 +241,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
+ qk_tap_dance_action_t tap_dance_actions[] = {
+  [TD_Q_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_Q, ESC)
+ };
