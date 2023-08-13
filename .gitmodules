@@ -22,3 +22,6 @@
 	path = lib/lvgl
 	url = https://github.com/qmk/lvgl.git
 	branch = release/v8.2
+[submodule "lib/lufa"]
+	path = lib/lufa
+	url = git@github.com:qmk/lufa.git
