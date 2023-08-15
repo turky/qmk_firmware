@@ -1,16 +1,16 @@
 #include QMK_KEYBOARD_H
-
-#include "keymap_jp.h"
-#include "process_tap_dance.h"
+#include "keymap_japanese.h"
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
-#define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
-#define _ADJUST 16
+enum layer_names {
+    _QWERTY,
+    _LOWER,
+    _RAISE,
+    _ADJUST
+};
 
 #define ____ KC_TRNS
 #define xxxx KC_NO
@@ -23,7 +23,7 @@ enum custom_keycodes {
 };
 
 enum {
-    TD_Q_ESC = 0
+    TD_Q_ESC,
 };
 
 #define KC_RST RESET
@@ -68,8 +68,8 @@ enum {
 #define TAB    KC_TAB
 #define SPC    KC_SPC
 #define BSPC   KC_BSPC
-#define HENK   KC_HENK
-#define MHEN   KC_MHEN
+#define HENK   JP_HENK
+#define MHEN   JP_MHEN
 #define HOME   KC_HOME
 #define END    KC_END
 #define COPY   LCTL(KC_C)
@@ -93,10 +93,11 @@ enum {
 #define VOLU   KC_VOLU
 #define BTN2   KC_BTN2
 #define BTN1   KC_BTN1
-#define PTSC KC_PSCREEN
+#define PTSC   KC_PRINT_SCREEN
 
 #define SFTZ   LSFT_T(KC_Z)
 #define GUIX   LGUI_T(KC_X)
+#define GUIENT LGUI_T(KC_ENT)
 
 // Defines for task manager and such
 #define CALTDEL LCTL(LALT(KC_DEL))
@@ -108,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Qwerty
  *
  * ,----------------------------------.           ,----------------------------------.
- * |   Q  |   W  |   E  |   R  |   T  |           |   Y  |   U  |   I  |   O  |   P  |
+ * | Q_ESC|   W  |   E  |   R  |   T  |           |   Y  |   U  |   I  |   O  |   P  |
  * |------+------+------+------+------|           |------+------+------+------+------|
  * |   A  |   S  |   D  |   F  |   G  |           |   H  |   J  |   K  |   L  |   ;  |
  * |------+------+------+------+------|           |------+------+------+------+------|
@@ -125,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 TD(TD_Q_ESC),  KC_W, KC_E, KC_R, KC_T,         KC_Y, KC_U, KC_I, KC_O, KC_P,
         KC_A,  KC_S, KC_D, KC_F, KC_G,         KC_H, KC_J, KC_K, KC_L, SCLN,
         SFTZ,  GUIX, KC_C, KC_V, KC_B,         KC_N, KC_M, COMM, DOT,  SLSH,
-                      SFT,  CTL,  SPC,         KC_ENT,RAISE,LOWER
+                      SFT,  CTL,  SPC,       GUIENT,RAISE,LOWER
 ),
 
 /* Raise
@@ -188,9 +189,9 @@ JP_CAPS, ____, VOLD, PGDN,PASTE,      ____,  AT , ASTR, PIPE, BSLS,
  *                                `------'    `------'
  */
 [_ADJUST] =  LAYOUT( \
-  KC_F1,  KC_F2, KC_F3, KC_F4, KC_F5,     KC_F6, KC_F7, KC_F8,  KC_F9,  KC_F10, \
-  KC_F11, KC_F12, ____,  ____,  ____,      ____,  ____,  ____, TSKMGR, CALTDEL, \
-   RESET,   ____, ____,  ____,  ____,      ____,  ____,  ____,   ____,    ____, \
+    KC_F1,  KC_F2, KC_F3, KC_F4, KC_F5,     KC_F6, KC_F7, KC_F8,  KC_F9,  KC_F10, \
+   KC_F11, KC_F12, ____,  ____,  ____,      ____,  ____,  ____, TSKMGR, CALTDEL, \
+  QK_BOOT,   ____, ____,  ____,  ____,      ____,  ____,  ____,   ____,    ____, \
                     ____, ____, ____,      ____,  ____,  ____                    \
 )
 };
@@ -243,6 +244,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
   [TD_Q_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ESC)
 };
