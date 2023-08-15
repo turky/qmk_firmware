@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-#include "keymap_jp.h"
+#include "keymap_japanese.h"
 
 enum foobar_layers {
   QWERTY,
@@ -23,6 +23,16 @@ enum foobar_layers {
   FN3,
   FN4,
   FN5
+};
+
+enum {
+  TD_Q_ESC,
+};
+
+// Tap Dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for Escape, twice for Caps Lock
+    [TD_Q_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ESC),
 };
 
 #define FN1_SPC  LT(FN1, KC_SPC)
@@ -38,13 +48,12 @@ enum foobar_layers {
 #define RGUI_ESC RGUI_T(KC_ESC)
 
 #define EXLM   JP_EXLM
-#define DQT    JP_DQT
 #define HASH   JP_HASH
 #define DLR    JP_DLR
 #define PERC   JP_PERC
 #define AMPR   JP_AMPR
 #define QUOT   JP_QUOT
-#define DQT    JP_DQT
+#define DQT    JP_DQUO
 #define GRV    JP_GRV
 #define PIPE   JP_PIPE
 #define YEN    JP_YEN
@@ -77,8 +86,8 @@ enum foobar_layers {
 #define TAB    KC_TAB
 #define SPC    KC_SPC
 #define BSPC   KC_BSPC
-#define HENK   KC_HENK
-#define MHEN   KC_MHEN
+#define HENK   JP_HENK
+#define MHEN   JP_MHEN
 #define HOME   KC_HOME
 #define END    KC_END
 #define DEL    KC_DEL
@@ -106,11 +115,11 @@ enum foobar_layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [QWERTY] = LAYOUT_split(
-    KC_Q,   KC_W,  KC_E,  KC_R,    KC_T,     KC_Y,  KC_U,   KC_I,   KC_O,     KC_P,
-    KC_A,   KC_S,  KC_D,  KC_F,    KC_G, RGUI_ESC,  KC_H,   KC_J,   KC_K,     KC_L,
-  LCTL_Z, LALT_X, FN5_C, FN3_V, FN1_SPC,  FN2_ENT, FN4_B, RALT_N, RCTL_M, LSFT_BSP
+  TD(TD_Q_ESC),   KC_W,  KC_E,  KC_R,    KC_T,     KC_Y,  KC_U,   KC_I,   KC_O,     KC_P,
+          KC_A,   KC_S,  KC_D,  KC_F,    KC_G, RGUI_ESC,  KC_H,   KC_J,   KC_K,     KC_L,
+        LCTL_Z, LALT_X, FN5_C, FN3_V, FN1_SPC,  FN2_ENT, FN4_B, RALT_N, RCTL_M, LSFT_BSP
   ),
-
+  
   [FN1] = LAYOUT_split(
     KC_1,    KC_2, KC_3, KC_4,   KC_5,   KC_6, KC_7, KC_8, KC_9,   KC_0,
     EXLM,     DQT, HASH,  DLR,    PERC,  AMPR, QUOT, LPRN, RPRN,   TILD,
@@ -138,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [FN5] = LAYOUT_split(
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, RESET,   _______, _______, _______, _______
+    _______, _______, _______, _______, _______, QK_BOOT,   _______, _______, _______, _______
   ),
 };
 
