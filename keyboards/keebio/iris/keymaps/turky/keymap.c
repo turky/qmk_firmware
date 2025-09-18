@@ -1,13 +1,14 @@
 #include QMK_KEYBOARD_H
-
-#include "keymap_jp.h"
+#include "keymap_japanese.h"
 
 extern keymap_config_t keymap_config;
 
-#define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
-#define _ADJUST 16
+enum layer_names {
+    _QWERTY,
+    _LOWER,
+    _RAISE,
+    _ADJUST
+};
 
 #define ____ KC_TRNS
 #define xxxx KC_NO
@@ -19,13 +20,12 @@ extern keymap_config_t keymap_config;
 //#define KC_BL_S BL_STEP
 
 #define EXLM   JP_EXLM
-#define DQT    JP_DQT
+#define DQT    JP_DQUO
 #define HASH   JP_HASH
 #define DLR    JP_DLR
 #define PERC   JP_PERC
 #define AMPR   JP_AMPR
 #define QUOT   JP_QUOT
-#define DQT    JP_DQT
 #define GRV    JP_GRV
 #define PIPE   JP_PIPE
 #define YEN    JP_YEN
@@ -58,8 +58,8 @@ extern keymap_config_t keymap_config;
 #define TAB    KC_TAB
 #define SPC    KC_SPC
 #define BSPC   KC_BSPC
-#define HENK   KC_HENK
-#define MHEN   KC_MHEN
+#define HENK   JP_HENK
+#define MHEN   JP_MHEN
 #define HOME   KC_HOME
 #define END    KC_END
 // #define COPY   LCTL(KC_C)
@@ -94,7 +94,6 @@ enum custom_keycodes {
   RAISE,
   ADJUST,
 };
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
    [_QWERTY] = LAYOUT(
@@ -105,9 +104,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
       CTL,  KC_A, KC_S, KC_D, KC_F, KC_G,                    KC_H, KC_J, KC_K, KC_L, SCLN, COLN,
   //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
-      SFT,  KC_Z, KC_X, KC_C, KC_V, KC_B, HENK,         GUI, KC_N, KC_M, COMM, DOT,  SLSH, BSLS,
+      ALT,  KC_Z, KC_X, KC_C, KC_V, KC_B, HENK,         GUI, KC_N, KC_M, COMM, DOT,  SLSH, BSLS,
   //`------+-----+-----+-----+-----+-----+----/        \----+-----+-----+-----+-----+-----+----'
-                          BSPC,  DEL, SPC,             KC_ENT,LOWER,RAISE
+                          SFT,  CTL,  SPC,             KC_ENT,LOWER,RAISE
   //                    `------+-----+----'              `---+-----+----'
   ),
 
@@ -119,9 +118,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
       CTGUI,____, LCBR, RCBR, LBRC, RBRC,                    KLEFT,KDOWN, KUP ,KRIGHT,PLUS,PIPE,
   //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
-      ____, KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,HOME,         END, KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11,
+      ____, EXLM,  DQT, HASH,  DLR, PERC,HOME,         END, AMPR, QUOT, LPRN, RPRN, MINS, ____,
   //`------+-----+-----+-----+-----+-----+----/        \----+-----+-----+-----+-----+-----+----'
-                          ALT,  CTL,  DEL,               ____,____, ADJUST
+                          BSPC,  DEL, DEL,               ____,____, ADJUST
   //                    `------+-----+----'              `---+-----+----'
   ),
 
@@ -131,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
       ESC , EXLM,  DQT, HASH,  DLR, PERC,                    AMPR, QUOT, LPRN, RPRN, TILD, CIRC,
   //|------+-----+-----+-----+-----+-----|                  |-----+-----+-----+-----+-----+----|
-     KC_RST,KC_MPRV,KC_MNXT,VOLU,PGUP,UNDS,                   MS_L, MS_D, MS_U, MS_R, EQL, BSLS,
+    QK_BOOT,KC_MPRV,KC_MNXT,VOLU,PGUP,UNDS,                   MS_L, MS_D, MS_U, MS_R, EQL, BSLS,
   //|------+-----+-----+-----+-----+-----+----.       ,-----|-----+-----+-----+-----+-----+----|
       ____, MUTE, ____, VOLD, PGDN, MINS,____,         ____, HOME, END, BTN1, BTN2, PLUS, ____,
   //`------+-----+-----+-----+-----+-----+----/       \----+-----+-----+-----+-----+-----+----'
