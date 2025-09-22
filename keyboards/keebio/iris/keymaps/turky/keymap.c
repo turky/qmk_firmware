@@ -70,10 +70,10 @@ enum layer_names {
 #define WH_U   KC_WH_U
 #define PGDN   KC_PGDN
 #define PGUP   KC_PGUP
-#define MS_U   KC_MS_U
-#define MS_L   KC_MS_L
-#define MS_D   KC_MS_D
-#define MS_R   KC_MS_R
+#define MS_U   MS_UP
+#define MS_L   MS_LEFT
+#define MS_D   MS_DOWN
+#define MS_R   MS_RGHT
 #define KLEFT  KC_LEFT
 #define KUP    KC_UP
 #define KDOWN  KC_DOWN
@@ -81,8 +81,8 @@ enum layer_names {
 #define MUTE   KC_MUTE
 #define VOLD   KC_VOLD
 #define VOLU   KC_VOLU
-#define BTN2   KC_BTN2
-#define BTN1   KC_BTN1
+#define BTN1   MS_BTN1
+#define BTN2   MS_BTN2
 #define CTGUI  LCTL(KC_LGUI)
 // #define LWR    LT(KC_LOWR, HOME)
 // #define RSE    LT(KC_RASE, END)
