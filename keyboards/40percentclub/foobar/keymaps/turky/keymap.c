@@ -35,17 +35,17 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_Q_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ESC),
 };
 
-#define FN1_SPC  LT(FN1, KC_SPC)
-#define FN2_ENT  LT(FN2, KC_ENT)
-#define FN3_V    LT(FN3, KC_V)
-#define FN4_B    LT(FN4, KC_B)
-#define FN5_C    LT(FN5, KC_C)
-#define RALT_N   RALT_T(KC_N)
+#define FN1_ENT  LT(FN1, KC_ENT)
+#define FN2_B    LT(FN2, KC_B)
+#define FN3_N    LT(FN3, KC_N)
+#define FN4_M    LT(FN4, KC_M)
+#define FN5_COMM LT(FN5, KC_COMM)
+#define LSFT_Z   LSFT_T(KC_Z)
+#define RSFT_L   RSFT_T(KC_L)
 #define LALT_X   LALT_T(KC_X)
-#define LCTL_Z   LCTL_T(KC_Z)
-#define RCTL_M   RCTL_T(KC_M)
-#define LSFT_BSP LSFT_T(KC_BSPC)
-#define RGUI_ESC RGUI_T(KC_ESC)
+#define LCTL_C   LCTL_T(KC_Cq)
+
+#define RCTL_P   RCTL_T(KC_P)
 
 #define EXLM   JP_EXLM
 #define HASH   JP_HASH
@@ -115,32 +115,32 @@ tap_dance_action_t tap_dance_actions[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [QWERTY] = LAYOUT_split(
-  TD(TD_Q_ESC),   KC_W,  KC_E,  KC_R,    KC_T,     KC_Y,  KC_U,   KC_I,   KC_O,     KC_P,
-          KC_A,   KC_S,  KC_D,  KC_F,    KC_G, RGUI_ESC,  KC_H,   KC_J,   KC_K,     KC_L,
-        LCTL_Z, LALT_X, FN5_C, FN3_V, FN1_SPC,  FN2_ENT, FN4_B, RALT_N, RCTL_M, LSFT_BSP
+  TD(TD_Q_ESC),   KC_W,   KC_E, KC_R, KC_T,      KC_Y,  KC_U,  KC_I,  KC_O,   RCTL_P,
+          KC_A,   KC_S,   KC_D, KC_F, KC_G,       GUI,  KC_H,  KC_J,  KC_K,   RSFT_L,
+        LSFT_Z, LALT_X, LCTL_C, KC_V, SPC,    FN1_ENT, FN2_B, FN3_N, FN4_M, FN5_COMM
   ),
   
   [FN1] = LAYOUT_split(
     KC_1,    KC_2, KC_3, KC_4,   KC_5,   KC_6, KC_7, KC_8, KC_9,   KC_0,
     EXLM,     DQT, HASH,  DLR,    PERC,  AMPR, QUOT, LPRN, RPRN,   TILD,
-     SFT, _______, BSPC,  DEL, _______,  MINS,  EQL, LBRC, RBRC, _______
+     SFT, _______, BSPC,  DEL, _______, _______,  MINS,  EQL, LBRC, RBRC
   ),
 
   [FN2] = LAYOUT_split(
-     KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
-    KC_F11,   KC_F12, _______, _______, _______,   KLEFT,   KDOWN,     KUP,  KRIGHT,   KC_GRV,
+     KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,  KC_F7, KC_F8,   KC_F9, KC_F10,
+    KC_F11,   KC_F12, _______, _______, _______,   KLEFT,  KDOWN,   KUP,  KRIGHT,    GRV,
      CTGUI, _______,    HENK,    MHEN, _______, _______, _______, _______, _______, _______
   ),
 
   [FN3] = LAYOUT_split(
-       ESC, _______, _______, _______, _______,    MINS,    EQL,    LBRC,    RBRC,   TILD,
-    KC_TAB, _______, _______, _______, _______, _______,   SLSH,    QUOT,    SCLN,   COLN,
-     CTGUI, _______, _______, _______, _______, _______,   COMM,     DOT,    SLSH,   BSLS
+       ESC, _______, _______, _______, _______,    MINS,   EQL,  LBRC,  RBRC,   TILD,
+    KC_TAB, _______,    COMM,     DOT,    SLSH,    BSLS,  SLSH,  QUOT,  SCLN,   COLN,
+     CTGUI, _______, _______, _______, _______, _______,  _______, _______, _______, _______  
   ),
 
   [FN4] = LAYOUT_split(
-    _______, _______, _______, _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
-    KC_TAB,  _______, _______, _______, _______, KC_LABK, KC_RABK, KC_QUES, KC_COLN, KC_DQUO,
+    _______, UNDS, PLUS, LCBR, RCBR, PIPE, _______, _______, _______, _______,
+    TAB , _______, UNDS, YEN, COLN, DQT, _______, _______, _______, _______,
        CTL,     CUT, _______,   PASTE, _______, _______, _______, _______, _______, _______
   ),
 
