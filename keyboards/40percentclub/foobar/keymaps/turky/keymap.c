@@ -43,7 +43,7 @@ tap_dance_action_t tap_dance_actions[] = {
 #define LSFT_Z   LSFT_T(KC_Z)
 #define RSFT_L   RSFT_T(KC_L)
 #define LALT_X   LALT_T(KC_X)
-#define LCTL_C   LCTL_T(KC_Cq)
+#define LCTL_C   LCTL_T(KC_C)
 
 #define RCTL_P   RCTL_T(KC_P)
 
@@ -119,23 +119,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_A,   KC_S,   KC_D, KC_F, KC_G,       GUI,  KC_H,  KC_J,  KC_K,   RSFT_L,
         LSFT_Z, LALT_X, LCTL_C, KC_V, SPC,    FN1_ENT, FN2_B, FN3_N, FN4_M, FN5_COMM
   ),
-  
+
   [FN1] = LAYOUT_split(
-    KC_1,    KC_2, KC_3, KC_4,   KC_5,   KC_6, KC_7, KC_8, KC_9,   KC_0,
-    EXLM,     DQT, HASH,  DLR,    PERC,  AMPR, QUOT, LPRN, RPRN,   TILD,
-     SFT, _______, BSPC,  DEL, _______, _______,  MINS,  EQL, LBRC, RBRC
+    KC_1,    KC_2, KC_3, KC_4,   KC_5,   KC_6, KC_7, KC_8, KC_9, KC_0,
+    EXLM,     DQT, HASH,  DLR,    PERC,  AMPR, QUOT, LPRN, RPRN, TILD,
+     SFT, _______, _______, BSPC,  DEL,  MINS, PLUS, COMM,  DOT, SLSH
   ),
 
   [FN2] = LAYOUT_split(
-     KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,  KC_F7, KC_F8,   KC_F9, KC_F10,
-    KC_F11,   KC_F12, _______, _______, _______,   KLEFT,  KDOWN,   KUP,  KRIGHT,    GRV,
-     CTGUI, _______,    HENK,    MHEN, _______, _______, _______, _______, _______, _______
+     KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7, KC_F8,  KC_F9, KC_F10,
+    KC_F11,   KC_F12, _______, _______, _______,   KLEFT,   KDOWN,   KUP, KRIGHT,    GRV,
+     CTGUI, _______,  _______,    HENK,    MHEN, _______, _______,   EQL,   LBRC,   RBRC
   ),
 
   [FN3] = LAYOUT_split(
        ESC, _______, _______, _______, _______,    MINS,   EQL,  LBRC,  RBRC,   TILD,
     KC_TAB, _______,    COMM,     DOT,    SLSH,    BSLS,  SLSH,  QUOT,  SCLN,   COLN,
-     CTGUI, _______, _______, _______, _______, _______,  _______, _______, _______, _______  
+     CTGUI, _______, _______, _______, _______, _______,  _______, _______, _______, _______
   ),
 
   [FN4] = LAYOUT_split(
